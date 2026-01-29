@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item+ VIP</title>
+
+  <style>
+    :root{
+      --pistachio:#dfe7d6;
+      --pistachio2:#cfd8c6;
+      --gold:#caa24c;
+      --gold2:#b78f3b;
+      --ink:#1b1b1b;
+      --card:#ffffffcc;
+    }
+
+    body{
+      margin:0;
+      font-family: "Georgia", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 50% 0%, #f2f6ee 0%, var(--pistachio) 55%, #e7ece2 100%);
+      min-height: 100vh;
+      display:flex;
+      justify-content:center;
+    }
+
+    .wrap{
+      width: 420px;          /* kaip “telefono” ekranas */
+      max-width: 100%;
+      padding: 18px 14px 28px;
+      box-sizing:border-box;
+    }
+
+    .logo{
+      text-align:center;
+      margin-top: 8px;
+    }
+
+    .logo h1{
+      margin:0;
+      font-size: 56px;
+      letter-spacing: -1px;
+      font-weight: 800;
+    }
+    .logo .plus{
+      color: var(--gold);
+      font-weight: 900;
+    }
+    .logo .tagline{
+      margin-top: 6px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      opacity: .75;
+    }
+
+    .vip-btn{
+      margin: 18px auto 10px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .btn-gold{
+      border:0;
+      background: linear-gradient(180deg, #d7b35e 0%, var(--gold) 60%, var(--gold2) 100%);
+      color:#fff;
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 999px;
+      cursor:pointer;
+      box-shadow: 0 10px 22px rgba(0,0,0,.18);
+      font-size: 16px;
+    }
+    .btn-gold:active{ transform: translateY(1px); }
+
+    .vip-banner{
+      margin: 12px auto 18px;
+      background: linear-gradient(180deg, #d7b35e 0%, var(--gold) 55%, var(--gold2) 100%);
+      color:#fff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      box-shadow: 0 12px 26px rgba(0,0,0,.16);
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      justify-content:center;
+    }
+    .crown{
+      width: 26px; height: 26px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(255,255,255,.18);
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .tabs{
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      margin: 12px 0 14px;
+      padding: 0 6px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .tab{
+      flex:1;
+      text-align:center;
+      padding: 8px 6px;
+      border-radius: 12px;
+      opacity: .8;
+      cursor:pointer;
+      user-select:none;
+    }
+    .tab.active{
+      opacity: 1;
+      font-weight: 800;
+      position: relative;
+    }
+    .tab.active::after{
+      content:"";
+      position:absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 3px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 99px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .card{
+      background: var(--card);
+      border-radius: 14px;
+      overflow:hidden;
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.65);
+    }
+
+    .img{
+      height: 86px;
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.05) saturate(1.05);
+    }
+
+    /* Laikinai “paveikslai” — vėliau pakeisim į tikrus */
+    .img.clothes{ background-image: linear-gradient(135deg, #d9d0c5, #b9b2a9); }
+    .img.shoes{ background-image: linear-gradient(135deg, #efe7d7, #d7cfbf); }
+    .img.bag{ background-image: linear-gradient(135deg, #d7cbbf, #bdaea1); }
+
+    .card-body{
+      padding: 10px 10px 12px;
+      text-align:center;
+    }
+
+    .card-title{
+      margin:0;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .card-desc{
+      margin: 6px 0 0;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      opacity: .75;
+      line-height: 1.25;
+    }
+
+    .bottom-fade{
+      margin-top: 22px;
+      height: 120px;
+      background: radial-gradient(600px 120px at 50% 0%, rgba(0,0,0,.08) 0%, rgba(0,0,0,0) 70%);
+      opacity: .25;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="logo">
+      <h1>Item<span class="plus">+</span></h1>
+      <div class="tagline">Dėvėkis. Uždirbk. Mainyk.</div>
+    </div>
+
+    <div class="vip-btn">
+      <button class="btn-gold" id="vipToggle">Užeiti į VIP</button>
+    </div>
+
+    <div class="vip-banner" id="vipBanner" style="display:none;">
+      <span class="crown">👑</span>
+      <span>VIP režimas aktyvus</span>
+    </div>
+
+    <div class="tabs" id="tabs">
+      <div class="tab active">Moterims</div>
+      <div class="tab">Vyrams</div>
+      <div class="tab">Vaikams</div>
+      <div class="tab">Senjorams</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="img clothes"></div>
+        <div class="card-body">
+          <p class="card-title">Rūbai</p>
+          <p class="card-desc">Striukės, megztiniai, kelnės…</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img shoes"></div>
+        <div class="card-body">
+          <p class="card-title">Avalynė</p>
+          <p class="card-desc">Batai, sportbačiai, basutės…</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img bag"></div>
+        <div class="card-body">
+          <p class="card-title">Aksesuarai</p>
+          <p class="card-desc">Rankinės, kepurės, diržai…</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-fade"></div>
+  </div>
+
+  <script>
+    // VIP režimo įjungimas (parodo “VIP režimas aktyvus”)
+    const btn = document.getElementById('vipToggle');
+    const banner = document.getElementById('vipBanner');
+    let vipOn = false;
+
+    btn.addEventListener('click', () => {
+      vipOn = !vipOn;
+      banner.style.display = vipOn ? 'flex' : 'none';
+      btn.textContent = vipOn ? 'VIP aktyvus' : 'Užeiti į VIP';
+    });
+
+    // Tab'ai (tik vizualiai)
+    const tabs = document.querySelectorAll('#tabs .tab');
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    }));
+  </script>
+</body>
+</html>
