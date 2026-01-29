@@ -1,83 +1,274 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Item+ VIP</title>
   <style>
-    body {
-      margin: 0;
+    :root{
+      --pist:#dfe7d6;
+      --pist2:#f1f4ee;
+      --gold:#caa24c;
+      --gold2:#b88a33;
+      --gold3:#e6d19a;
+      --ink:#1b1b1b;
+      --card:#ffffffcc;
+      --shadow: 0 14px 30px rgba(0,0,0,.18);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Georgia", serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 50% 0%, #f7f6ee 0%, var(--pist) 55%, #e7ece2 100%);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:28px 16px 40px;
+    }
+
+    /* phone-like frame */
+    .phone{
+      width:min(420px, 100%);
+      border-radius:26px;
+      overflow:hidden;
+      position:relative;
+      background:
+        radial-gradient(900px 420px at 50% 10%, #ffffffaa 0%, transparent 60%),
+        radial-gradient(900px 600px at 50% 95%, #ffffff88 0%, transparent 55%),
+        linear-gradient(180deg, #e9efdf 0%, #f6f5f0 45%, #e9efdf 100%);
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.6);
+    }
+
+    .grain{
+      position:absolute; inset:0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(0,0,0,.05) 0 1px, transparent 1px),
+        radial-gradient(circle at 70% 60%, rgba(0,0,0,.04) 0 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, rgba(0,0,0,.03) 0 1px, transparent 1px);
+      background-size: 12px 12px;
+      opacity:.25;
+      pointer-events:none;
+      mix-blend-mode:multiply;
+    }
+
+    header{
+      text-align:center;
+      padding:44px 18px 16px;
+      position:relative;
+    }
+
+    .logo{
+      font-size:54px;
+      font-weight:700;
+      letter-spacing:.5px;
+      margin:0;
+      color:#4e5a4b;
+      text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    }
+    .logo .plus{ color: var(--gold); }
+
+    .tagline{
+      margin:8px 0 16px;
+      font-size:14px;
+      color:#3a3a3a;
+      opacity:.9;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 22px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      font-family: inherit;
+      color:#fff;
+      background: linear-gradient(180deg, var(--gold3) 0%, var(--gold) 35%, var(--gold2) 100%);
+      box-shadow: 0 10px 18px rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.55);
+      position:relative;
+      overflow:hidden;
+    }
+    .btn:after{
+      content:"";
+      position:absolute;
+      inset:-40% -20%;
+      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%);
+      transform: translateX(-60%) rotate(10deg);
+      opacity:.45;
+    }
+    .btn:hover:after{ transform: translateX(60%) rotate(10deg); transition: .55s ease; }
+
+    .vipbar{
+      margin:14px auto 0;
+      width:min(320px, 92%);
+      padding:12px 16px;
+      border-radius:14px;
+      background: linear-gradient(180deg, #e7d6a7 0%, #caa24c 45%, #b88a33 100%);
+      color:#1b1b1b;
+      font-weight:700;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .crown{
+      width:22px; height:22px;
+      filter: drop-shadow(0 1px 0 rgba(255,255,255,.5));
+    }
+
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      padding:18px 12px 8px;
+      font-size:15px;
+    }
+    nav a{
+      text-decoration:none;
+      color:#5a4a2a;
+      opacity:.85;
+      padding-bottom:6px;
+      border-bottom:2px solid transparent;
+    }
+    nav a.active{
+      opacity:1;
+      border-bottom-color: var(--gold);
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      padding:10px 14px 18px;
+    }
+
+    .card{
+      background: var(--card);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow: 0 12px 25px rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.7);
+      text-decoration:none;
+      color:inherit;
+      display:flex;
+      flex-direction:column;
+      min-height:172px;
+    }
+
+    .thumb{
+      height:92px;
+      background-size:cover;
+      background-position:center;
+      filter: saturate(1.05) contrast(1.02);
+    }
+
+    .card-body{
+      padding:10px 10px 12px;
+      text-align:center;
+      font-family: "Georgia", serif;
+    }
+    .card-title{
+      font-weight:700;
+      margin:0;
+      font-size:16px;
+      color:#2b2b2b;
+    }
+    .card-sub{
+      margin:6px 0 0;
+      font-size:11px;
+      color:#5a5a5a;
+      line-height:1.25;
+    }
+
+    footer{
+      text-align:center;
+      padding:8px 0 18px;
+    }
+    .back{
+      color:#3e3e3e;
+      text-decoration:none;
+      opacity:.85;
       font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #eef3e2, #ffffff);
-      text-align: center;
+      font-size:14px;
     }
+    .back:hover{ opacity:1; text-decoration:underline; }
 
-    header {
-      padding: 70px 20px 40px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
-
-    .vip-active {
-      display: inline-block;
-      background: linear-gradient(135deg, #d4af37, #f1d27a);
-      color: #4a3b00;
-      padding: 14px 26px;
-      border-radius: 14px;
-      font-weight: bold;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-      margin-bottom: 40px;
-    }
-
-    .categories {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      padding-bottom: 60px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: white;
-      width: 240px;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .back {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #555;
+    /* mobile: stack to 1 column */
+    @media (max-width: 390px){
+      .logo{ font-size:48px; }
+      .cards{ grid-template-columns: 1fr; }
+      .thumb{ height:140px; }
+      .card{ min-height:auto; }
+      nav{ gap:14px; font-size:14px; }
     }
   </style>
 </head>
+
 <body>
+  <div class="phone">
+    <div class="grain"></div>
 
-  <header>
-    <h1>Item+</h1>
-    <div class="subtitle">VIP režimas</div>
-    <div class="vip-active">👑 VIP režimas aktyvus</div>
-  </header>
+    <header>
+      <h1 class="logo">Item<span class="plus">+</span></h1>
+      <div class="tagline">Dėvėk. Uždirbk. Mainyk.</div>
 
-  <section class="categories">
-    <div class="card">Rūbai</div>
-    <div class="card">Avalynė</div>
-    <div class="card">Aksesuarai</div>
-  </section>
+      <a class="btn" href="#" onclick="return false;">Užeiti į VIP</a>
 
-  <a class="back" href="index.html">← Grįžti į pradžią</a>
+      <div class="vipbar">
+        <svg class="crown" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 8l4.5 4L12 5l4.5 7L21 8v10H3V8z" fill="#fff" opacity=".35"/>
+          <path d="M3 8l4.5 4L12 5l4.5 7L21 8v10H3V8z" stroke="#2a1e0c" stroke-width="1.2"/>
+        </svg>
+        VIP režimas aktyvus
+      </div>
+    </header>
 
+    <nav>
+      <a class="active" href="#" onclick="return false;">Moterims</a>
+      <a href="#" onclick="return false;">Vyrams</a>
+      <a href="#" onclick="return false;">Vaikams</a>
+      <a href="#" onclick="return false;">Senjorams</a>
+    </nav>
+
+    <section class="cards">
+      <a class="card" href="#" onclick="return false;">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1520975958225-1d1c74a4d0b2?auto=format&fit=crop&w=900&q=60');"></div>
+        <div class="card-body">
+          <p class="card-title">Rūbai</p>
+          <p class="card-sub">Striukės, megztiniai,<br/>kelnės…</p>
+        </div>
+      </a>
+
+      <a class="card" href="#" onclick="return false;">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1528701800489-20be3c5ea37d?auto=format&fit=crop&w=900&q=60');"></div>
+        <div class="card-body">
+          <p class="card-title">Avalynė</p>
+          <p class="card-sub">Batai, sportbačiai,<br/>basutės…</p>
+        </div>
+      </a>
+
+      <a class="card" href="#" onclick="return false;">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=60');"></div>
+        <div class="card-body">
+          <p class="card-title">Aksesuarai</p>
+          <p class="card-sub">Rankinės, kepurės,<br/>diržai…</p>
+        </div>
+      </a>
+    </section>
+
+    <footer>
+      <a class="back" href="./index.html">← Grįžti į pradžią</a>
+    </footer>
+  </div>
 </body>
 </html>
 
