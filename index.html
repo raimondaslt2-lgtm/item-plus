@@ -6,74 +6,334 @@
   <title>Item+</title>
 
   <style>
-    body {
+    :root{
+      --pist: #e9efdf;
+      --pist2:#f3f6ee;
+      --ink:#121212;
+      --muted:#6b6b6b;
+
+      --gold1:#f1d07a;
+      --gold2:#d4af37;
+      --gold3:#b38b2a;
+
+      --card:#ffffffcc;
+      --shadow: 0 18px 45px rgba(0,0,0,.12);
+      --shadow2: 0 10px 28px rgba(0,0,0,.10);
+
+      --r: 22px;
+      --max: 980px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      color:var(--ink);
+      background: radial-gradient(1200px 600px at 50% -200px, #ffffff 0%, var(--pist2) 55%, #f7f3fb 100%);
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 70px;
+    }
+
+    /* HERO */
+    .hero{
+      background: linear-gradient(180deg, var(--pist) 0%, #eef3e4 100%);
+      border-radius: 26px;
+      padding: 46px 18px 34px;
+      box-shadow: var(--shadow2);
+      text-align:center;
+      position: relative;
+      overflow:hidden;
+    }
+
+    .grain{
+      position:absolute; inset:0;
+      background-image:
+        radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px);
+      background-size: 4px 4px;
+      opacity:.08;
+      pointer-events:none;
+      mix-blend-mode:multiply;
+    }
+
+    .logo{
+      font-size: 64px;
+      line-height: 1;
       margin: 0;
-      font-family: "Georgia", serif;
-      background: #eef3e4;
-      color: #111;
-      text-align: center;
+      font-weight: 700;
+      letter-spacing: .5px;
+      display:inline-flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .logo .word{color:#3e3e3e}
+    .logo .plus{
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold1), var(--gold2), var(--gold3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow: 0 6px 18px rgba(180,140,40,.22);
+      font-size: 70px;
+      position: relative;
+      top: -2px;
     }
 
-    header {
-      padding: 120px 20px;
-      background: #eef3e4;
-    }
-
-    h1 {
-      font-size: 56px;
-      margin-bottom: 12px;
-    }
-
-    .subtitle {
-      font-size: 20px;
-      margin-bottom: 40px;
-    }
-
-    .cta {
-      display: inline-block;
-      background: #caa24c;
-      color: white;
-      padding: 14px 36px;
-      border-radius: 999px;
-      text-decoration: none;
+    .tagline{
+      margin: 12px auto 18px;
+      max-width: 620px;
+      color:#3f3f3f;
       font-size: 18px;
-      font-weight: bold;
     }
 
-    .categories {
-      background: #fff;
-      padding: 80px 20px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      color:#fff;
+      text-decoration:none;
+      font-weight: 700;
+      letter-spacing: .2px;
+      background: linear-gradient(180deg, #e0c06a 0%, #caa24c 45%, #b38b2a 100%);
+      box-shadow: 0 14px 30px rgba(170, 130, 40, .28);
+      border: 1px solid rgba(255,255,255,.28);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .cta:hover{ transform: translateY(-1px); box-shadow: 0 18px 36px rgba(170,130,40,.32); }
+
+    /* PREMIUM CARD */
+    .premium{
+      margin: 18px auto 0;
+      max-width: 860px;
+      background: linear-gradient(180deg, rgba(233,239,223,.72) 0%, rgba(255,255,255,.72) 100%);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      min-height: 210px;
+      border: 1px solid rgba(0,0,0,.05);
     }
 
-    .card {
-      background: #fff;
-      width: 220px;
-      padding: 30px;
+    .premium .left{
+      padding: 26px 26px 24px;
+      text-align:left;
+    }
+
+    .premium h2{
+      margin: 0 0 6px;
+      font-size: 28px;
+      color:#2b2b2b;
+    }
+
+    .premium p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+      max-width: 420px;
+    }
+
+    .btn-soft{
+      display:inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight: 700;
+      color:#fff;
+      background: linear-gradient(180deg, #d2b25a 0%, #b88a2f 100%);
+      box-shadow: 0 10px 20px rgba(160,120,40,.22);
+    }
+
+    .premium .right{
+      position: relative;
+      min-height: 210px;
+      background:
+        radial-gradient(380px 220px at 70% 30%, rgba(255,255,255,.65), rgba(255,255,255,0)),
+        linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,0));
+    }
+
+    /* Čia įdėsi savo paveikslėlį į /assets/premium.jpg */
+    .premium .right img{
+      position:absolute;
+      inset: 12px 12px 12px 12px;
+      width: calc(100% - 24px);
+      height: calc(100% - 24px);
+      object-fit: cover;
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      font-size: 22px;
-      font-weight: bold;
+      filter: saturate(.95) contrast(1.02);
+      box-shadow: 0 14px 26px rgba(0,0,0,.16);
+    }
+
+    /* TABS */
+    .tabs{
+      margin: 18px auto 0;
+      max-width: 860px;
+      display:flex;
+      justify-content:center;
+      gap: 20px;
+      color: #6a6a6a;
+      font-size: 14px;
+    }
+    .tab{
+      padding: 10px 8px;
+      border-bottom: 2px solid transparent;
+      cursor: default;
+      user-select:none;
+    }
+    .tab.active{
+      color:#2d2d2d;
+      border-color: rgba(202,162,76,.85);
+    }
+
+    /* CATEGORY CARDS */
+    .grid{
+      max-width: 860px;
+      margin: 14px auto 0;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .cat{
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+      text-decoration:none;
+      color: inherit;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .cat:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
+
+    .cat .img{
+      height: 128px;
+      background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,0));
+      position: relative;
+    }
+    .cat .img img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(.92) contrast(1.02);
+    }
+
+    .cat .label{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 12px 14px 14px;
+      font-weight: 700;
+      color:#4a4a4a;
+    }
+
+    .icon{
+      width: 20px;
+      height: 20px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 999px;
+      background: rgba(202,162,76,.16);
+      color: #8a6a1f;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    /* Footer spacer */
+    .bottom-fade{
+      margin: 26px auto 0;
+      max-width: 860px;
+      height: 70px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(233,239,223,.55) 0%, rgba(255,255,255,0) 100%);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .premium{ grid-template-columns: 1fr; }
+      .premium .right{ min-height: 220px; }
+      .grid{ grid-template-columns: 1fr; }
+      .logo{ font-size: 54px; }
+      .logo .plus{ font-size: 60px; }
     }
   </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="grain"></div>
 
-  <header>
-    <h1>Item+</h1>
-    <div class="subtitle">Mainyk. Derėkis. Gauk daiktą ir pinigus.</div>
-    <a href="#" class="cta">Pradėti mainus</a>
-  </header>
+      <h1 class="logo">
+        <span class="word">Item</span><span class="plus">+</span>
+      </h1>
 
-  <section class="categories">
-    <div class="card">Rūbai</div>
-    <div class="card">Avalynė</div>
-    <div class="card">Aksesuarai</div>
-  </section>
+      <div class="tagline">
+        Mainyk rūbus. Derėkis. Gauk ir daiktą, ir pinigus.
+      </div>
 
+      <a class="cta" href="#">
+        Pradėti mainus
+      </a>
+
+      <div class="premium" aria-label="Premium mainai">
+        <div class="left">
+          <h2>Premium mainai</h2>
+          <p>
+            Vardiniai rūbai, avalynė ir aksesuarai mainams su priemoka.
+          </p>
+          <a class="btn-soft" href="#">Įeiti į Premium</a>
+        </div>
+
+        <div class="right">
+          <!-- ĮKELK paveikslėlį į repo: /assets/premium.jpg -->
+          <img src="assets/premium.jpg" alt="Premium mainai" onerror="this.style.display='none'">
+        </div>
+      </div>
+
+      <div class="tabs" aria-label="Kategorijos">
+        <div class="tab active">Moterims</div>
+        <div class="tab">Vyrams</div>
+        <div class="tab">Vaikams</div>
+        <div class="tab">Senjorams</div>
+      </div>
+
+      <div class="grid">
+        <a class="cat" href="#">
+          <div class="img">
+            <!-- ĮKELK paveikslėlį į repo: /assets/rubai.jpg -->
+            <img src="assets/rubai.jpg" alt="Rūbai" onerror="this.style.display='none'">
+          </div>
+          <div class="label"><span class="icon">👠</span> Rūbai</div>
+        </a>
+
+        <a class="cat" href="#">
+          <div class="img">
+            <!-- ĮKELK paveikslėlį į repo: /assets/avalynė.jpg (be liet. raidžių geriau: avalyne.jpg) -->
+            <img src="assets/avalyne.jpg" alt="Avalynė" onerror="this.style.display='none'">
+          </div>
+          <div class="label"><span class="icon">👞</span> Avalynė</div>
+        </a>
+
+        <a class="cat" href="#">
+          <div class="img">
+            <!-- ĮKELK paveikslėlį į repo: /assets/aksesuarai.jpg -->
+            <img src="assets/aksesuarai.jpg" alt="Aksesuarai" onerror="this.style.display='none'">
+          </div>
+          <div class="label"><span class="icon">💍</span> Aksesuarai</div>
+        </a>
+      </div>
+
+      <div class="bottom-fade"></div>
+    </section>
+  </div>
 </body>
 </html>
