@@ -106,37 +106,8 @@
     }
     .cta:hover{ transform: translateY(-1px); box-shadow: 0 18px 36px rgba(170,130,40,.32); }
 
-    /* PREMIUM CARD */
-    .premium{
-      margin: 18px auto 0;
-      max-width: 860px;
-      background: linear-gradient(180deg, rgba(233,239,223,.72) 0%, rgba(255,255,255,.72) 100%);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      min-height: 210px;
-      border: 1px solid rgba(0,0,0,.05);
-    }
-
-    .premium .left{
-      padding: 26px 26px 24px;
-      text-align:left;
-    }
-
-    .premium h2{
-      margin: 0 0 6px;
-      font-size: 28px;
-      color:#2b2b2b;
-    }
-
-    .premium p{
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.45;
-      max-width: 420px;
+  
+    
     }
 
     .btn-soft{
@@ -161,15 +132,7 @@
     }
 
     /* Čia įdėsi savo paveikslėlį į /assets/premium.jpg */
-    .premium .right img{
-      position:absolute;
-      inset: 12px 12px 12px 12px;
-      width: calc(100% - 24px);
-      height: calc(100% - 24px);
-      object-fit: cover;
-      border-radius: 16px;
-      filter: saturate(.95) contrast(1.02);
-      box-shadow: 0 14px 26px rgba(0,0,0,.16);
+
     }
 
     /* TABS */
@@ -303,19 +266,6 @@
           
 
     
-<div class="premium" aria-label="Premium mainai">
-  <div class="left">
-    <h2>Premium mainai</h2>
-    <p>Vardiniai rūbai, avalynė ir aksesuarai mainams su priemoka.</p>
-    <a class="btn-soft" href="#">Įeiti į Premium</a>
-  </div>
-
-  <div class="right">
-    <img src="premium.jpg" alt="Premium mainai" onerror="this.style.display='none'">
-
-
-  </div>
-</div>
 
       <div class="tabs" aria-label="Kategorijos">
         <div class="tab active">Moterims</div>
