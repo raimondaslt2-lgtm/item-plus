@@ -135,15 +135,20 @@
 
     }
 
-    /* TABS */
     .tabs{
-      margin: 18px auto 0;
-      max-width: 860px;
-      display:flex;
-      justify-content:center;
-      gap: 20px;
-      color: #6a6a6a;
-      font-size: 14px;
+  margin: 18px auto 0;
+  max-width: 860px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #6a6a6a;
+  font-size: 14px;
+
+  flex-direction: row;   /* VISADA viena eilutė */
+  flex-wrap: nowrap;     /* NELEIDŽIA kristi žemyn */
+  white-space: nowrap;   /* saugiklis */
+}
+
     }
     .tab{
       padding: 10px 8px;
