@@ -135,15 +135,26 @@
 
     }
 /* TABS – Moterims / Vyrams / Vaikams / Senjorams */
+/* FORCE TABS TO ONE LINE */
 .tabs{
-  margin: 24px auto;
-  max-width: 860px;
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  color: #6a6a6a;
-  font-size: 15px;
-  white-space: nowrap;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 24px !important;
+  margin: 24px auto !important;
+  max-width: 860px !important;
+  white-space: nowrap !important;
+}
+
+.tab{
+  display: inline-block !important;
+  padding: 10px 6px !important;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
 }
 
 .tab{
