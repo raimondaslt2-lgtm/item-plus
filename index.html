@@ -134,25 +134,31 @@
     /* Čia įdėsi savo paveikslėlį į /assets/premium.jpg */
 
     }
-
-    .tabs{.tabs{
-  margin: 0 auto 18px;   /* buvo 18px auto 0 – apverčiam */
-  position: relative;
-  top: -40px;            /* ← KELIA Į VIRŠŲ */
-}
-
-  margin: 18px auto 0;
+/* TABS – Moterims / Vyrams / Vaikams / Senjorams */
+.tabs{
+  margin: 24px auto;
   max-width: 860px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
   color: #6a6a6a;
-  font-size: 14px;
-
-  flex-direction: row;   /* VISADA viena eilutė */
-  flex-wrap: nowrap;     /* NELEIDŽIA kristi žemyn */
-  white-space: nowrap;   /* saugiklis */
+  font-size: 15px;
+  white-space: nowrap;
 }
+
+.tab{
+  padding: 10px 6px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.tab.active{
+  color: #2d2d2d;
+  border-color: rgba(202,162,76,.85);
+}
+
+    
+
 
     }
     .tab{
