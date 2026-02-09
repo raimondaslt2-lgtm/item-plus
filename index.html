@@ -239,7 +239,33 @@
       .grid{ grid-template-columns: 1fr; }
       .logo{ font-size: 54px; }
       .logo .plus{ font-size: 60px; }
-    }
+     /* MOBILE FIX – tabs ir kortelės slenka į šoną */
+  .tabs{
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 18px;
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .tab{
+    flex: 0 0 auto;
+  }
+
+  .grid{
+    display: flex;
+    overflow-x: auto;
+    gap: 14px;
+    scroll-snap-type: x mandatory;
+  }
+  .cat{
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+}
+  }
+ }
   </style>
 </head>
 
