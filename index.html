@@ -9,14 +9,13 @@
     :root{
       --pist: #e9efdf;
       --pist2:#f3f6ee;
-      --ink:#121212;
-      --muted:#6b6b6b;
+      --ink:#1b1b1b;
+      --muted:#666;
 
       --gold1:#f1d07a;
       --gold2:#d4af37;
       --gold3:#b38b2a;
 
-      --card:#ffffffcc;
       --shadow: 0 18px 45px rgba(0,0,0,.12);
       --shadow2: 0 10px 28px rgba(0,0,0,.10);
 
@@ -24,7 +23,7 @@
       --max: 980px;
     }
 
-    *{box-sizing:border-box}
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family: Georgia, "Times New Roman", serif;
@@ -35,14 +34,14 @@
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 28px 18px 70px;
+      padding: 22px 18px 60px;
     }
 
     /* HERO */
     .hero{
       background: linear-gradient(180deg, var(--pist) 0%, #eef3e4 100%);
       border-radius: 26px;
-      padding: 46px 18px 34px;
+      padding: 42px 18px 34px;
       box-shadow: var(--shadow2);
       text-align:center;
       position: relative;
@@ -51,8 +50,7 @@
 
     .grain{
       position:absolute; inset:0;
-      background-image:
-        radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px);
       background-size: 4px 4px;
       opacity:.08;
       pointer-events:none;
@@ -69,7 +67,7 @@
       align-items: baseline;
       gap: 6px;
     }
-    .logo .word{color:#3e3e3e}
+    .logo .word{ color:#3e3e3e; }
     .logo .plus{
       font-weight: 900;
       background: linear-gradient(135deg, var(--gold1), var(--gold2), var(--gold3));
@@ -92,8 +90,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      padding: 12px 28px;
+      padding: 12px 30px;
       border-radius: 999px;
       color:#fff;
       text-decoration:none;
@@ -104,72 +101,43 @@
       border: 1px solid rgba(255,255,255,.28);
       transition: transform .12s ease, box-shadow .12s ease;
     }
-    .cta:hover{ transform: translateY(-1px); box-shadow: 0 18px 36px rgba(170,130,40,.32); 
-
-    .btn-soft{
-      display:inline-block;
-      padding: 10px 18px;
-      border-radius: 999px;
-      text-decoration:none;
-      font-weight: 700;
-      color:#fff;
-      background: linear-gradient(180deg, #d2b25a 0%, #b88a2f 100%);
-      box-shadow: 0 10px 20px rgba(160,120,40,.22);
+    .cta:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(170,130,40,.32);
     }
 
-    .premium .right{
-      position: relative;
-      min-height: 480px;
-
-
-      background:
-        radial-gradient(380px 220px at 70% 30%, rgba(255,255,255,.65), rgba(255,255,255,0)),
-        linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,0));
+    /* CONTENT UNDER HERO */
+    .content{
+      max-width: 860px;
+      margin: 22px auto 0;
     }
 
-    /* Čia įdėsi savo paveikslėlį į /assets/premium.jpg */
-
+    /* TABS */
+    .tabs{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap: 34px;
+      font-size: 18px;
+      white-space: nowrap;
+      margin: 10px auto 18px;
+      padding: 0;
     }
-.tabs{
-  margin: 24px auto;
-  max-width: 860px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-  font-size: 18px;   /* didesnės raidės */
-  white-space: nowrap;
-}
-
-
-.tab{
-  text-align: center;
-  display: inline-block;
-  padding: 10px 6px;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  user-select: none;
-}
-
-.tab.active{
-  color: #2d2d2d;
-  border-color: rgba(202,162,76,.85);
-
     .tab{
-      padding: 10px 8px;
+      display:inline-block;
+      padding: 10px 6px;
       border-bottom: 2px solid transparent;
-      cursor: default;
+      cursor: pointer;
       user-select:none;
+      color:#3a3a3a;
     }
     .tab.active{
-      color:#2d2d2d;
+      color:#1f1f1f;
       border-color: rgba(202,162,76,.85);
     }
 
-    /* CATEGORY CARDS */
+    /* GRID (DESKTOP) */
     .grid{
-      max-width: 860px;
-      margin: 14px auto 0;
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
@@ -184,21 +152,23 @@
       text-decoration:none;
       color: inherit;
       transition: transform .12s ease, box-shadow .12s ease;
+      min-width: 0;
     }
-    .cat:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
+    .cat:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
 
     .cat .img{
-      height: 128px;
+      height: 160px;
       background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,0));
-      position: relative;
     }
     .cat .img img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
 
     .cat .label{
       display:flex;
@@ -208,120 +178,115 @@
       padding: 12px 14px 14px;
       font-weight: 700;
       color:#4a4a4a;
+      font-size: 20px;
     }
-
     .icon{
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       border-radius: 999px;
       background: rgba(202,162,76,.16);
       color: #8a6a1f;
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1;
     }
 
-    /* Footer spacer */
     .bottom-fade{
       margin: 26px auto 0;
-      max-width: 860px;
       height: 70px;
       border-radius: 22px;
       background: linear-gradient(180deg, rgba(233,239,223,.55) 0%, rgba(255,255,255,0) 100%);
     }
 
-    /* Responsive */
+    /* MOBILE FIX (svarbiausia: viskas slenka į šoną, ne krenta žemyn) */
     @media (max-width: 860px){
-      .premium{ grid-template-columns: 1fr; }
-      .premium .right{ min-height: 220px; }
-      .grid{ grid-template-columns: 1fr; }
-      .logo{ font-size: 54px; }
-      .logo .plus{ font-size: 60px; }
-     /* MOBILE FIX – tabs ir kortelės slenka į šoną */
-  .tabs{
-    justify-content: flex-start;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 18px;
-    font-size: 16px;
-    padding: 6px;
-  }
+      .wrap{ padding: 16px 12px 50px; }
+      .logo{ font-size: 52px; }
+      .logo .plus{ font-size: 58px; }
 
-  .tab{
-    flex: 0 0 auto;
-  }
+      /* tabs – horizontal scroll */
+      .tabs{
+        justify-content:flex-start;
+        overflow-x:auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 22px;
+        padding: 0 6px 8px;
+        margin: 12px 0 14px;
+      }
+      .tabs::-webkit-scrollbar{ display:none; }
 
-  .grid{
-    display: flex;
-    overflow-x: auto;
-    gap: 14px;
-    scroll-snap-type: x mandatory;
-  }
-  .cat{
-    flex: 0 0 85%;
-    scroll-snap-align: start;
-  }
-}
-  }
- }
+      /* cards – horizontal scroll */
+      .grid{
+        display:flex;
+        overflow-x:auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 14px;
+        scroll-snap-type: x mandatory;
+        padding: 0 6px 10px;
+      }
+      .grid::-webkit-scrollbar{ display:none; }
+
+      .cat{
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+      }
+      .cat .img{ height: 220px; }
+      .cat .label{ font-size: 22px; }
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
+
     <section class="hero">
       <div class="grain"></div>
 
       <h1 class="logo">
         <span class="word">Item</span><span class="plus">+</span>
       </h1>
-<div class="tagline">Mainyk. Derėkis. Uždirbk.</div>
-<a class="cta" href="#">Pradėti</a>
 
-<div class="tabs" aria-label="Kategorijos">
-  <div class="tab active">Moterims</div>
-  <div class="tab">Vyrams</div>
-  <div class="tab">Vaikams</div>
-  <div class="tab">Senjorams</div>
-</div>
+      <div class="tagline">Mainyk. Derėkis. Uždirbk.</div>
+
+      <a class="cta" href="#">Pradėti</a>
+    </section>
+
+    <div class="content">
+      <div class="tabs" aria-label="Kategorijos">
+        <div class="tab active">Moterims</div>
+        <div class="tab">Vyrams</div>
+        <div class="tab">Vaikams</div>
+        <div class="tab">Senjorams</div>
+      </div>
 
       <div class="grid">
         <a class="cat" href="#">
           <div class="img">
-            <!-- ĮKELK paveikslėlį į repo: /assets/rubai.jpg -->
             <img src="rubai.jpg" alt="Rūbai" onerror="this.style.display='none'">
-
           </div>
           <div class="label"><span class="icon">👠</span> Rūbai</div>
         </a>
 
         <a class="cat" href="#">
           <div class="img">
-            <!-- ĮKELK paveikslėlį į repo: /assets/avalynė.jpg (be liet. raidžių geriau: avalyne.jpg) -->
             <img src="avalyne.jpg" alt="Avalynė" onerror="this.style.display='none'">
-
-
-
           </div>
           <div class="label"><span class="icon">👞</span> Avalynė</div>
         </a>
 
         <a class="cat" href="#">
           <div class="img">
-            <!-- ĮKELK paveikslėlį į repo: /assets/aksesuarai.jpg -->
             <img src="aksesuarai.jpg" alt="Aksesuarai" onerror="this.style.display='none'">
-
-
-
           </div>
           <div class="label"><span class="icon">💍</span> Aksesuarai</div>
         </a>
       </div>
 
       <div class="bottom-fade"></div>
-    </section>
+    </div>
+
   </div>
 </body>
 </html>
