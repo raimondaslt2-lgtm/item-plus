@@ -43,40 +43,41 @@
     }
 
     /* Dekoratyviniai foniniai paveikslai (suknelė + batai) */
-    .bg{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      opacity:.24;
-      filter: saturate(1.05) contrast(1.02);
-    }
-    .bg::before,
-    .bg::after{
-      content:"";
-      position:absolute;
-      background-repeat:no-repeat;
-      background-size:contain;
-      background-position:center;
-      width: 520px;
-      height: 520px;
-    }
-    /* Suknelė (kairė) */
-    .bg::before{
-      left: -140px;
-      top: 220px;
-      transform: rotate(-8deg);
-      background-image: url("batai.png");
-      border-radius: 60px;
-    }
-    /* Batai (dešinė) */
-    .bg::after{
-      right: -150px;
-      top: 260px;
-      transform: rotate(10deg);
-      background-image: url("suknele.png");
-      border-radius: 60px;
-    }
+
+.bg{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.75;
+}
+
+.bg::before,
+.bg::after{
+    content:"";
+    position:absolute;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+}
+
+/* Suknelė dešinėje */
+.bg::before{
+    background-image:url("suknele.png");
+    width:520px;
+    height:520px;
+    right:-80px;
+    bottom:0;
+}
+
+/* Batai kairėje */
+.bg::after{
+    background-image:url("batai.png");
+    width:520px;
+    height:520px;
+    left:-80px;
+    bottom:0;
+}
 
     .container{
       max-width: var(--max);
