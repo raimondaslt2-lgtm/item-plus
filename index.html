@@ -44,39 +44,52 @@
 
     /* Dekoratyviniai foniniai paveikslai (suknelė + batai;
 .bg{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    z-index:0;
-    opacity:.85;
-
-    filter:
-        saturate(0.6)
-        brightness(1.05)
-        contrast(0.95)
-        sepia(0.15);
+    /* Dekoratyviniai foniniai paveikslai (suknelė + batai) */
+.bg{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .55;               /* bendras ryškumas */
 }
+
+/* abu paveikslai */
 .bg::before,
 .bg::after{
-    content:"";
-    position:absolute;
-    background-repeat:no-repeat;
-    background-size:contain;
-    background-position:center;
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 520px;
+  height: 520px;
+  filter: saturate(0.95) contrast(1.02);
 }
 
-/* Suknelė dešinėje */
+/* Batai (kairė) */
 .bg::before{
-    background-image:url("suknele.png");
-    width:650px;
-height:650px;
-    right:-80px;
-    bottom:0;
+  left: -110px;
+  bottom: -60px;
+  background-image: url("batai.png");
 }
 
-/* Batai kairėje */
+/* Suknelė (dešinė) */
 .bg::after{
-    background-image:url("batai.png");
+  right: -90px;
+  top: 140px;
+  background-image: url("suknele.png");
+}
+
+/* Telefonui – mažinam, kad netrukdytų */
+@media (max-width: 700px){
+  .bg::before, .bg::after{
+    width: 320px;
+    height: 320px;
+    opacity: .55;
+  }
+  .bg::before{ left: -120px; bottom: -80px; }
+  .bg::after{ right: -120px; top: 220px; }
+}
     width:520px;
     height:520px;
     left:-80px;
