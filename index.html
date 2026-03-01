@@ -42,16 +42,20 @@
       overflow:hidden;
     }
 
-    /* Dekoratyviniai foniniai paveikslai (suknelė + batai) */
-
+    /* Dekoratyviniai foniniai paveikslai (suknelė + batai;
 .bg{
     position:absolute;
     inset:0;
     pointer-events:none;
     z-index:0;
-    opacity:.75;
-}
+    opacity:.85;
 
+    filter:
+        saturate(0.6)
+        brightness(1.05)
+        contrast(0.95)
+        sepia(0.15);
+}
 .bg::before,
 .bg::after{
     content:"";
