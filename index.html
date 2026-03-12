@@ -281,6 +281,47 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
         * Pirmiems 100 narių — viskas nemokamai visam laikui. Kitiems 900 — 3 mėn. nemokamai.
       </div>
     </div>
-  </div>
+  <div class="modal" id="regModal">
+
+<div class="modal-card">
+
+<button class="modal-x" id="closeModal">X</button>
+
+<h2>Registracija į Beta</h2>
+<p>Palik kontaktą – parašysime kai startuos Item+</p>
+
+<form id="regForm">
+
+<label>Vardas</label>
+<input name="name" required placeholder="Pvz. Raimis">
+
+<label>El. paštas</label>
+<input name="email" type="email" required placeholder="pvz@email.com">
+
+<label>Facebook (nebūtina)</label>
+<input name="fb" placeholder="Facebook vardas">
+
+<button class="btn" type="submit">Registruotis</button>
+
+</form>
+
+</div>
+</div>
+<script>
+
+const btn = document.querySelector('.btn')
+const modal = document.getElementById('regModal')
+const closeBtn = document.getElementById('closeModal')
+
+btn.addEventListener('click', function(e){
+e.preventDefault()
+modal.classList.add('open')
+})
+
+closeBtn.addEventListener('click', function(){
+modal.classList.remove('open')
+})
+
+</script>
 </body>
-</html>
+  </html>
