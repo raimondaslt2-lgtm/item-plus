@@ -230,8 +230,27 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
       .hero p{ font-size: 18px; }
       .section-title{ font-size: 34px; }
       .bg::before{ left:-260px; top:160px; width:560px; height:560px; }
-      .bg::after{ right:-280px; bottom:-160px; width:600px; height:600px; }
-    }
+      ..modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.4);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.modal.open{
+display:flex;
+}
+
+.modal-card{
+background:white;
+padding:30px;
+border-radius:20px;
+width:400px;
+}
+      bg::after{ right:-280px; bottom:-160px; width:600px; height:600px; }
+    
   </style>
 </head>
 
