@@ -484,12 +484,14 @@ form.addEventListener('submit', function(e){
     form.reset()
     modal.classList.remove('open')
   })
-})
-fetch('https://script.google.com/macros/s/AKfycbwe6kBvkIx10ijbZOatxgJungErbbSvJ_zJ97x7OMT5wMSBtHsC20M3SJP3-E8beN3t/exec')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('userCount').innerText =
-      'Jau prisijungė ' + data.count + ' žmonių 🚀'
+function showUserCount(data) {
+  document.getElementById('userCount').innerText =
+    'Jau prisijungė ' + data.count + ' žmonių 🚀'
+}
+
+const script = document.createElement('script')
+script.src = 'https://script.google.com/macros/s/AKfycbwe6kBvkIx10ijbZOatxgJungErbbSvJ_zJ97x7OMT5wMSBtHsC20M3SJP3-E8beN3t/exec?callback=showUserCount'
+document.body.appendChild(script)
   })
 462 </script>
 
