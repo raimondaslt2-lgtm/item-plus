@@ -434,7 +434,7 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
 <input name="fb" placeholder="Facebook vardas">
 
 <button class="btn" type="submit">Registruotis</button>
-
+<p id="userCount" style="margin-top:10px; font-weight:600;"></p>
 </form>
 
 </div>
@@ -484,9 +484,13 @@ form.addEventListener('submit', function(e){
     modal.classList.remove('open')
   })
 })
-
+fetch('https://script.google.com/macros/s/AKfycbwe6kBvkIx10ijbZOatxgJungErbbSvJ_zJ97x7OMT5wMSBtHsC20M3SJP3-E8beN3t/exec')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('userCount').innerText =
+      'Jau prisijungė ' + data.count + ' žmonių 🚀'
+  })
 462 </script>
-})
-</script>
+
 </body>
   </html>
