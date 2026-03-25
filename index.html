@@ -459,7 +459,7 @@ window.addEventListener('click', function(e){
   if(e.target === modal){
     modal.classList.remove('open')
   }
-461 })
+ })
 
 // 👉 ČIA ĮKLIJUOJI KODĄ
 
@@ -480,20 +480,21 @@ form.addEventListener('submit', function(e){
   })
   .then(res => res.text())
   .then(() => {
-    
     form.reset()
     modal.classList.remove('open')
   })
+})
+
 function showUserCount(data) {
   document.getElementById('userCount').innerText =
     'Jau prisijungė ' + data.count + ' žmonių 🚀'
 }
 
 const script = document.createElement('script')
-script.src = 'https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zclWYYS9LmYuLHD3i118fbozGFoHwOnAASpbN/exec?callback=showUserCount'
+script.src = 'https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zclWYS9LmYuLHD3i118fbozGFoHw0nAASpbN/exec?callback=showUserCount'
 document.body.appendChild(script)
   
-462 </script>
+ </script>
 
 </body>
   </html>
