@@ -490,8 +490,21 @@ function showUserCount(data) {
     'Jau prisijungė ' + data.count + ' žmonių 🚀'
 }
 
+const userCountEl = document.getElementById('userCount')
+
 const script = document.createElement('script')
 script.src = 'https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zclWYS9LmYuLHD3i118fbozGFoHw0nAASpbN/exec?callback=showUserCount'
+
+script.onerror = function () {
+  userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
+}
+
+setTimeout(function () {
+  if (userCountEl.innerText === 'Kraunasi...') {
+    userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
+  }
+}, 3000)
+
 document.body.appendChild(script)
   
  </script>
