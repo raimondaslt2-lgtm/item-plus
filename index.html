@@ -553,7 +553,9 @@ const form = document.getElementById('regForm')
 
 form.addEventListener('submit', function(e){
   e.preventDefault()
-
+const submitBtn = document.getElementById('submitBtn')
+submitBtn.disabled = true
+submitBtn.innerText = 'Registruojama...'
   const data = {
     name: form.name.value,
     email: form.email.value,
@@ -566,8 +568,12 @@ form.addEventListener('submit', function(e){
   })
   .then(res => res.text())
   .then(() => {
-    form.reset()
-    modal.classList.remove('open')
+  form.reset()
+  modal.classList.remove('open')
+
+  submitBtn.disabled = false
+  submitBtn.innerText = 'Registruotis'
+})
   })
 })
 
