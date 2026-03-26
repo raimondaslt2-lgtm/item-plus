@@ -545,8 +545,9 @@ script.onerror = function () {
 }
 
 setTimeout(function () {
-  if (userCountEl.innerText === 'Kraunasi...') {
-    userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
+  if (userCountEl.innerText === '' || userCountEl.innerText === 'Kraunasi...') {
+  userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
+}
   }
 }, 3000)
 
