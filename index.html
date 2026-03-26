@@ -327,7 +327,7 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
       .hero p{ font-size: 18px; }
       .section-title{ font-size: 34px; }
       .bg::before{ left:-260px; top:160px; width:560px; height:560px; }
-      
+    }  
 .modal-card{
   background: white;
   padding: 30px;
@@ -350,6 +350,50 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
   border: 1px solid #ddd;
   border-radius: 14px;
   margin-bottom: 10px;
+  @media (max-width: 560px){
+
+  .cards{
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 14px auto 8px;
+  }
+
+  .card{
+    width: 100%;
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+
+  .card h3{
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+
+  .card p{
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .chip{
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+
+}
+
+  .note{
+    font-size: 14px;
+    line-height: 1.45;
+    padding: 0 4px;
+  }
+
+  #userCount{
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 0 4px;
+    margin-top: 10px;
+  }
+}
 }
 
 .modal-x{
