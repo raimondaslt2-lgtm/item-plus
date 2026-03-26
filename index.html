@@ -532,19 +532,19 @@ const btn = document.getElementById('openModalBtn')
 const modal = document.getElementById('regModal')
 const closeBtn = document.getElementById('closeModal')
 
-btn.addEventListener('click', function(e){
-e.preventDefault()
-modal.classList.add('open')
-})
+btn.onclick = function () {
+  modal.classList.add('open')
+}
 
-closeBtn.addEventListener('click', function(){
-modal.classList.remove('open')
-})
+closeBtn.onclick = function () {
+  modal.classList.remove('open')
+}
 
-window.addEventListener('click', function(e){
-  if(e.target === modal){
+window.onclick = function (e) {
+  if (e.target === modal) {
     modal.classList.remove('open')
   }
+}
  })
 
 // 👉 ČIA ĮKLIJUOJI KODĄ
