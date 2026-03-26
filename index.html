@@ -468,7 +468,7 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
           Visada lieki su daiktu ir pinigais.
         </p>
 
-        <a class="btn" href="#nariai">Registruotis į Beta</a>
+        <a class="btn" href="javascript:void(0)" id="openModalBtn">Registruotis į Beta</a>
       </section>
 
       <div class="section-title" id="nariai">Narių tipai</div>
@@ -528,7 +528,7 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
 </div>
 <script>
 
-const btn = document.querySelector('.btn')
+const btn = document.getElementById('openModalBtn')
 const modal = document.getElementById('regModal')
 const closeBtn = document.getElementById('closeModal')
 
