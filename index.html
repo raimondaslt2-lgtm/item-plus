@@ -400,7 +400,7 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
   font-size: 20px;
   cursor: pointer;
 }
-.modal{
+
 
     
   </style>
@@ -421,7 +421,7 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
           Visada lieki su daiktu ir pinigais.
         </p>
 
-        <button class="btn" type="button" onclick="document.getElementById('regModal').classList.add('open')">Registruotis į Beta</button>
+        <button class="btn" type="button" onclick="document.getElementById('regModal').classList.add('open'); document.body.style.overflow='hidden'">Registruotis į Beta</button>
       </section>
 
       <div class="section-title" id="nariai">Narių tipai</div>
@@ -481,31 +481,32 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
 </div>
 <script>
 
-const openBtn = document.getElementById('openModalBtn')
 const modal = document.getElementById('regModal')
 const closeBtn = document.getElementById('closeModalBtn')
-openBtn.onclick = function () {
-  modal.classList.add('open')
-  document.body.style.overflow = 'hidden'
-}
+const form = document.getElementById('regForm')
+const submitBtn = document.getElementById('submitBtn')
 
-
+// uždaryti su X
 closeBtn.onclick = function () {
   modal.classList.remove('open')
   document.body.style.overflow = 'auto'
 }
 
- 
+// uždaryti paspaudus foną
+window.onclick = function (e) {
+  if (e.target === modal) {
+    modal.classList.remove('open')
+    document.body.style.overflow = 'auto'
+  }
+}
 
-// 👉 ČIA ĮKLIJUOJI KODĄ
-
-const form = document.getElementById('regForm')
-
+// registracija
 form.addEventListener('submit', function(e){
   e.preventDefault()
-const submitBtn = document.getElementById('submitBtn')
-submitBtn.disabled = true
-submitBtn.innerText = 'Registruojama...'
+
+  submitBtn.disabled = true
+  submitBtn.innerText = 'Registruojama...'
+
   const data = {
     name: form.name.value,
     email: form.email.value,
@@ -518,23 +519,28 @@ submitBtn.innerText = 'Registruojama...'
   })
   .then(res => res.text())
   .then(() => {
-  form.reset()
-  modal.classList.remove('open')
-
-  submitBtn.disabled = false
-  submitBtn.innerText = 'Registruotis'
-})
+    form.reset()
+    modal.classList.remove('open')
+    document.body.style.overflow = 'auto'
+    submitBtn.disabled = false
+    submitBtn.innerText = 'Registruotis'
+  })
+  .catch(() => {
+    submitBtn.disabled = false
+    submitBtn.innerText = 'Registruotis'
+    alert('Klaida, pabandyk dar kartą')
   })
 })
 
+// user count
 function showUserCount(data) {
   document.getElementById('userCount').innerText =
     'Jau prisijungė ' + data.count + ' žmonių 🚀'
 }
 
 const userCountEl = document.getElementById('userCount')
-
 const script = document.createElement('script')
+
 script.src = 'https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zclWYS9LmYuLHD3i118fbozGFoHw0nAASpbN/exec?callback=showUserCount'
 
 script.onerror = function () {
@@ -543,14 +549,9 @@ script.onerror = function () {
 
 setTimeout(function () {
   if (userCountEl.innerText === '' || userCountEl.innerText === 'Kraunasi...') {
-  userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
-}
+    userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
   }
 }, 3000)
 
 document.body.appendChild(script)
-  
- </script>
-
-</body>
-  </html>
+</script>
