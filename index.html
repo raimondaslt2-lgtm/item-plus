@@ -234,7 +234,11 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
   max-width: 420px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.18);
   position: relative;
+  max-height: calc(100vh - 24px);
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
 }
+
 
 .modal-card label{
   display: block;
@@ -248,6 +252,7 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
   border: 1px solid #ddd;
   border-radius: 14px;
   margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .modal-x{
@@ -297,6 +302,10 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
 }
 
 @media (max-width: 560px){
+  .modal{
+  align-items: flex-start;
+  padding: 12px;
+}
   .wrap{
     padding: 16px 10px 36px;
   }
