@@ -457,7 +457,7 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
 
 <div class="modal-card">
 
-<button class="modal-x" id="closeModal">X</button>
+<button class="modal-x" id="closeModalBtn">X</button>
 
 <h2>Registracija į Beta</h2>
 <p>Palik kontaktą – parašysime kai startuos Item+</p>
@@ -481,12 +481,12 @@ filter: blur(.2px) saturate(1.05) contrast(1.02);
 </div>
 <script>
 
-const btn = document.getElementById('openModalBtn')
+const openBtn = document.getElementById('openModalBtn')
 const modal = document.getElementById('regModal')
-const closeBtn = document.getElementById('closeModal')
-
-btn.onclick = function () {
+const closeBtn = document.getElementById('closeModalBtn')
+openBtn.onclick = function () {
   modal.classList.add('open')
+  document.body.style.overflow = 'hidden'
 }
 
 closeBtn.onclick = function () {
