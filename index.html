@@ -531,13 +531,20 @@ form.addEventListener('submit', function(e){
     body: JSON.stringify(data)
   })
   .then(res => res.text())
-  .then(() => {
-    form.reset()
-    modal.classList.remove('open')
-    document.body.style.overflow = 'auto'
+.then(res => {
+  if (res === "DUPLICATE") {
+    alert("Šis el. paštas jau registruotas 🚫")
     submitBtn.disabled = false
     submitBtn.innerText = 'Registruotis'
-  })
+    return
+  }
+
+  form.reset()
+  modal.classList.remove('open')
+  document.body.style.overflow = 'auto'
+  submitBtn.disabled = false
+  submitBtn.innerText = 'Registruotis'
+})
   .catch(() => {
     submitBtn.disabled = false
     submitBtn.innerText = 'Registruotis'
