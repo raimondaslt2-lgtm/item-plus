@@ -492,6 +492,31 @@ overflow-y: auto;
 
 </div>
 </div>
+    <div class="modal" id="uploadModal">
+  <div class="modal-card">
+
+    <button class="modal-x" onclick="document.getElementById('uploadModal').classList.remove('open')">X</button>
+
+    <h2>Įkelk savo pirmą rūbą 👕</h2>
+
+    <form id="uploadForm">
+      <label>Pavadinimas</label>
+      <input name="title" required>
+
+      <label>Dydis</label>
+      <input name="size" required>
+
+      <label>Priemoka (€)</label>
+      <input name="price" required>
+
+      <label>Nuotraukos link</label>
+      <input name="image" required>
+
+      <button type="submit" class="btn">Įkelti</button>
+    </form>
+
+  </div>
+</div>
 <script>
 
 const modal = document.getElementById('regModal')
@@ -544,6 +569,7 @@ form.addEventListener('submit', function(e){
   document.body.style.overflow = 'auto'
   submitBtn.disabled = false
   submitBtn.innerText = 'Registruotis'
+  document.getElementById('uploadModal').classList.add('open')
 })
   .catch(() => {
     submitBtn.disabled = false
