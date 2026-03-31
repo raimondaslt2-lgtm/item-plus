@@ -550,11 +550,15 @@ form.addEventListener('submit', function(e) {
   submitBtn.disabled = true
   submitBtn.innerText = 'Registruojama...'
 
-  const data = {
-    name: form.name.value.trim(),
-    email: form.email.value.trim(),
-    fb: form.fb.value.trim()
-  }
+  const nameInput = form.querySelector('input[name="name"]')
+const emailInput = form.querySelector('input[name="email"]')
+const fbInput = form.querySelector('input[name="fb"]')
+
+const data = {
+  name: nameInput.value.trim(),
+  email: emailInput.value.trim(),
+  fb: fbInput.value.trim()
+}
 
   fetch('https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i1l8fboZGFoHwOnAAspbN/exec', {
     method: 'POST',
