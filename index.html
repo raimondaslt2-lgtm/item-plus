@@ -518,14 +518,14 @@ overflow-y: auto;
   </div>
 </div>
 <script>
-
 const modal = document.getElementById('regModal')
 const closeBtn = document.getElementById('closeModalBtn')
 const form = document.getElementById('regForm')
 const submitBtn = document.getElementById('submitBtn')
-  const uploadForm = document.getElementById('uploadForm')
+const uploadForm = document.getElementById('uploadForm')
+const uploadModal = document.getElementById('uploadModal')
 
-// uždaryti su X
+// uždaryti registracijos modalą
 closeBtn.onclick = function () {
   modal.classList.remove('open')
   document.body.style.overflow = 'auto'
@@ -537,75 +537,81 @@ window.onclick = function (e) {
     modal.classList.remove('open')
     document.body.style.overflow = 'auto'
   }
+  if (e.target === uploadModal) {
+    uploadModal.classList.remove('open')
+    document.body.style.overflow = 'auto'
+  }
 }
 
 // registracija
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', function(e) {
   e.preventDefault()
 
   submitBtn.disabled = true
   submitBtn.innerText = 'Registruojama...'
 
   const data = {
-    name: form.name.value,
-    email: form.email.value,
-    fb: form.fb.value
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    fb: form.fb.value.trim()
   }
 
-  https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i1l8fboZGFoHwOnAAspbN/exec
+  fetch('https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i1l8fboZGFoHwOnAAspbN/exec', {
     method: 'POST',
     body: JSON.stringify(data)
   })
   .then(res => res.text())
-.then(res => {
-  if (res === "DUPLICATE") {
-    alert("Šis el. paštas jau registruotas 🚫")
-    submitBtn.disabled = false
-    submitBtn.innerText = 'Registruotis'
-    return
-  }
+  .then(res => {
+    if (res === 'DUPLICATE') {
+      alert('Šis el. paštas jau registruotas ❌')
+      submitBtn.disabled = false
+      submitBtn.innerText = 'Registruotis'
+      return
+    }
 
-  form.reset()
-  modal.classList.remove('open')
-  document.body.style.overflow = 'auto'
-  submitBtn.disabled = false
-  submitBtn.innerText = 'Registruotis'
-  document.getElementById('uploadModal').classList.add('open')
-})
-  .catch(() => {
+    form.reset()
+    modal.classList.remove('open')
+    document.body.style.overflow = 'auto'
     submitBtn.disabled = false
     submitBtn.innerText = 'Registruotis'
+    uploadModal.classList.add('open')
+  })
+  .catch(err => {
+    console.error(err)
     alert('Klaida, pabandyk dar kartą')
+    submitBtn.disabled = false
+    submitBtn.innerText = 'Registruotis'
   })
 })
+
+// upload
 uploadForm.addEventListener('submit', async function(e) {
   e.preventDefault()
 
-  const data = {
-    title: uploadForm.title.value.trim(),
-    size: uploadForm.size.value.trim(),
-    price: uploadForm.price.value.trim(),
-    image: uploadForm.image.value.trim()
-  }
+  const formData = new FormData()
+  formData.append('title', uploadForm.title.value.trim())
+  formData.append('size', uploadForm.size.value.trim())
+  formData.append('price', uploadForm.price.value.trim())
+  formData.append('image', uploadForm.image.value.trim())
 
   try {
-    const response = await fetch('https://script.google.com/macros/s/AKfyc...', {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i1l8fboZGFoHwOnAAspbN/exec', {
       method: 'POST',
-      body: JSON.stringify(data)
+      body: formData
     })
 
     const result = await response.text()
     alert('Išsaugota: ' + result)
 
     uploadForm.reset()
-    document.getElementById('uploadModal').classList.remove('open')
+    uploadModal.classList.remove('open')
     document.body.style.overflow = 'auto'
-
   } catch (error) {
     console.error(error)
     alert('Klaida siunčiant')
   }
 })
+
 // user count
 function showUserCount(data) {
   document.getElementById('userCount').innerText =
@@ -615,7 +621,7 @@ function showUserCount(data) {
 const userCountEl = document.getElementById('userCount')
 const script = document.createElement('script')
 
-script.src = 'https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zclWYS9LmYuLHD3i118fbozGFoHw0nAASpbN/exec?callback=showUserCount'
+script.src = 'https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i1l8fboZGFoHwOnAAspbN/exec?callback=showUserCount'
 
 script.onerror = function () {
   userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
@@ -629,3 +635,5 @@ setTimeout(function () {
 
 document.body.appendChild(script)
 </script>
+
+
