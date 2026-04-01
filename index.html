@@ -414,7 +414,22 @@ overflow-y: auto;
   cursor: pointer;
 }
 
+.upload-btn {
+  margin-top: 15px;
+  background: linear-gradient(135deg, #d6b04a, #b8962e);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
+.upload-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
     
   </style>
 </head>
@@ -444,6 +459,10 @@ overflow-y: auto;
           <h3>Svečias</h3>
           <p>1 nemokamas mainas</p>
           <span class="chip">Greitas startas</span>
+          <button class="btn upload-btn"
+onclick="document.getElementById('uploadModal').classList.add('open'); document.body.style.overflow='hidden'">
+  Įkelti rūbą
+</button>
         </div>
 
         <div class="card">
@@ -451,6 +470,10 @@ overflow-y: auto;
           <p>Iki 20 daiktų</p>
           <p>4,99 €/mėn.</p>
           <span class="chip">Daugumai</span>
+          <button class="btn upload-btn"
+onclick="document.getElementById('uploadModal').classList.add('open'); document.body.style.overflow='hidden'">
+  Įkelti rūbą
+</button>
         </div>
 
         <div class="card">
@@ -458,6 +481,10 @@ overflow-y: auto;
           <p>Iki 50 daiktų</p>
           <p>6,99 €/mėn.</p>
           <span class="chip">Brandiniams</span>
+          <button class="btn upload-btn"
+onclick="document.getElementById('uploadModal').classList.add('open'); document.body.style.overflow='hidden'">
+  Įkelti rūbą
+</button>
         </div>
       </section>
 
