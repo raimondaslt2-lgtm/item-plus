@@ -522,22 +522,25 @@ onclick="document.getElementById('uploadModal').classList.add('open'); document.
     <div class="modal" id="uploadModal">
   <div class="modal-card">
 
-    <button class="modal-x" onclick="document.getElementById('uploadModal').classList.remove('open')">X</button>
+    <button class="modal-x" onclick="document.getElementById('uploadModal').classList.remove('open'); document.body.style.overflow='auto'">X</button>
 
     <h2>Įkelk savo pirmą rūbą 👕</h2>
 
     <form id="uploadForm">
       <label>Pavadinimas</label>
-      <input name="title" required>
+      <input name="title" placeholder="Pvz. megztukas" required>
 
       <label>Dydis</label>
-      <input name="size" required>
+      <input name="size" placeholder="Pvz. M / L / XL" required>
 
-      <label>Priemoka (€)</label>
-      <input name="price" required>
+      <label>Keisiu į</label>
+      <input name="price" placeholder="Pvz. džinsus, striukę arba +10€" required>
 
-      <label>Nuotraukos link</label>
-      <input name="image" required>
+      <label>Nuotrauka</label>
+      <input type="file" id="photoInput" accept="image/*" capture="environment" required>
+
+      <img id="photoPreview" alt="Nuotraukos peržiūra"
+        style="display:none; width:160px; margin-top:12px; border-radius:18px; box-shadow:0 8px 20px rgba(0,0,0,0.12);">
 
       <button type="submit" class="btn">Įkelti</button>
     </form>
@@ -657,7 +660,23 @@ script.src = 'https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDw
 script.onerror = function () {
   userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
 }
+// NUOTRAUKOS PREVIEW
+const photoInput = document.getElementById('photoInput')
+const photoPreview = document.getElementById('photoPreview')
 
+if (photoInput) {
+  photoInput.addEventListener('change', function () {
+    const file = this.files[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = function (e) {
+      photoPreview.src = e.target.result
+      photoPreview.style.display = 'block'
+    }
+    reader.readAsDataURL(file)
+  })
+}
 setTimeout(function () {
   if (userCountEl.innerText === '' || userCountEl.innerText === 'Kraunasi...') {
     userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
