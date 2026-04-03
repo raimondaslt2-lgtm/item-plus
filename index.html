@@ -487,7 +487,7 @@ onclick="document.getElementById('uploadModal').classList.add('open'); document.
 </button>
         </div>
       </section>
-
+<div id="itemsFeed" style="margin-top:40px;"></div>
       <div class="note">
         * Pirmiems 100 narių — viskas nemokamai visam laikui. Kitiems 900 — 3 mėn. nemokamai.
       </div>
@@ -636,7 +636,12 @@ uploadForm.addEventListener('submit', async function(e) {
 
     const result = await response.text()
     alert('Išsaugota: ' + result)
-
+addItemToFeed({
+  title: uploadForm.title.value,
+  size: uploadForm.size.value,
+  price: uploadForm.price.value,
+  image: photoPreview.src
+})
     uploadForm.reset()
     uploadModal.classList.remove('open')
     document.body.style.overflow = 'auto'
@@ -684,6 +689,30 @@ setTimeout(function () {
 }, 3000)
 
 document.body.appendChild(script)
+  function addItemToFeed(data) {
+  const feed = document.getElementById('itemsFeed')
+
+  const card = document.createElement('div')
+  card.style = `
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  `
+
+  card.innerHTML = `
+    <img src="${data.image}" style="width:100%; border-radius:15px; margin-bottom:10px;">
+    <h3>${data.title}</h3>
+    <p>Dydis: ${data.size}</p>
+    <p>Mainai: ${data.price}</p>
+    <button style="margin-top:10px; background:gold; border:none; padding:10px 15px; border-radius:999px;">
+      Siūlyti mainą
+    </button>
+  `
+
+  feed.prepend(card)
+}
 </script>
 
 
