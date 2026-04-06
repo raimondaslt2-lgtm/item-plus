@@ -446,7 +446,7 @@ uploadForm.addEventListener('submit', async function(e) {
   const titleInput = uploadForm.querySelector('input[name="title"]')
 const sizeInput = uploadForm.querySelector('input[name="size"]')
 const exchangeInput = uploadForm.querySelector('input[name="exchange"]')
-const file = photoInput.files[0]
+const file = document.getElementById('photoInput').files[0]
 
 if (!file) {
   alert('Prašom pridėti nuotrauką')
@@ -454,6 +454,10 @@ if (!file) {
 }
 
 const imageBase64 = photoPreview.src
+  if (!imageBase64 || imageBase64.length < 50) {
+  alert('Nuotrauka neįkelta teisingai ❌')
+  return
+}
 
 const data = {
   title: titleInput.value.trim(),
