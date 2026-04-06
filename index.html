@@ -534,7 +534,7 @@ onclick="document.getElementById('uploadModal').classList.add('open'); document.
       <input name="size" placeholder="Pvz. M / L / XL" required>
 
       <label>Keisiu į</label>
-      <input name="price" placeholder="Pvz. džinsus, striukę arba +10€" required>
+      <input name="exchange" placeholder="Pvz. striukė + 10€ priemoka" required>
 
       <label>Nuotrauka</label>
       <input type="file" id="photoInput" accept="image/*" capture="environment" required>
@@ -624,7 +624,7 @@ uploadForm.addEventListener('submit', async function(e) {
 
   const titleInput = uploadForm.querySelector('input[name="title"]')
 const sizeInput = uploadForm.querySelector('input[name="size"]')
-const tradeInput = uploadForm.querySelector('input[name="price"]')
+const exchangeInput = uploadForm.querySelector('input[name="exchange"]')
 const file = photoInput.files[0]
 
 if (!file) {
@@ -637,8 +637,8 @@ const imageBase64 = photoPreview.src
 const data = {
   title: titleInput.value.trim(),
   size: sizeInput.value.trim(),
-  exchange: exchangeInput.value.trim()
-  
+  exchange: exchangeInput.value.trim(),
+  image: imageBase64
 }
 
   try {
