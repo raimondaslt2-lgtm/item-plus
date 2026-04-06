@@ -303,7 +303,6 @@ overflow-y: auto;
     height: 640px;
     opacity: .24;
   }
-}
 
 @media (max-width: 560px){
   .modal{
@@ -649,12 +648,12 @@ const data = {
 
     const result = await response.text()
     alert('Išsaugota: ' + result)
-addItemToFeed({
-  title: uploadForm.title.value,
-  size: uploadForm.size.value,
-  price: uploadForm.price.value,
-  image: photoPreview.src,
-  exchange: uploadForm.exchange.value
+    addItemToFeed({
+  title: titleInput.value.trim(),
+  size: sizeInput.value.trim(),
+  image: imageBase64,
+  exchange: exchangeInput.value.trim()
+
 })
     uploadForm.reset()
     uploadModal.classList.remove('open')
