@@ -526,27 +526,44 @@ setTimeout(function () {
 document.body.appendChild(script)
   function addItemToFeed(data) {
   const feed = document.getElementById('itemsFeed')
-
   const card = document.createElement('div')
-  card.style = `
-    background: white;
-    padding: 15px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  card.style.cursor = 'pointer'
+card.style.transition = '0.2s'
+    card.style = `
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+`
   `
 
   card.innerHTML = `
-    <img src="${data.image}" style="width:100%; height:200px; object-fit:cover; border-radius:15px; margin-bottom:10px;">
+    <img src="${data.image}" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:15px; margin-bottom:10px;">
     <h3>${data.title}</h3>
     <p>Dydis: ${data.size}</p>
     <p>Keisiu į: ${data.exchange}</p>
-    <button style="margin-top:10px; background:gold; border:none; padding:10px 15px; border-radius:999px;">
+    <button class="offerBtn" style="margin-top:10px; background:gold; border:none; padding:10px 15px; border-radius:999px;">
       Siūlyti mainą
     </button>
   `
 
   feed.prepend(card)
+  const btn = card.querySelector('.offerBtn')
+
+btn.onclick = () => {
+  alert('Mainų pasiūlymas išsiųstas 🔥')
+}
+  card.onmouseover = () => {
+  card.style.transform = 'scale(1.02)'
+}
+
+card.onmouseout = () => {
+  card.style.transform = 'scale(1)'
+}
 }
 </script>
 
