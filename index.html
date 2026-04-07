@@ -454,10 +454,11 @@ if (!file) {
 }
 
 const imageBase64 = photoPreview.src
-  if (!imageBase64 || imageBase64.length < 50) {
-  alert('Nuotrauka neįkelta teisingai ❌')
+  if (!imageBase64 || imageBase64.length < 100) {
+  alert('Palauk kol nuotrauka pilnai užsikraus 📸')
   return
 }
+
 
 const data = {
   title: titleInput.value.trim(),
@@ -515,6 +516,7 @@ if (photoInput) {
 
     const reader = new FileReader()
     reader.onload = function (e) {
+      alert('Nuotrauka paruošta ✅')
       photoPreview.src = e.target.result
       photoPreview.style.display = 'block'
     }
