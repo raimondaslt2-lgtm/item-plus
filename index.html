@@ -454,7 +454,8 @@ if (!file) {
 }
 
 const imageBase64 = photoPreview.src
-  if (!imageBase64 || imageBase64.length < 100) {
+
+if (!imageBase64 || !imageBase64.startsWith('data:image')) {
   alert('Palauk kol nuotrauka pilnai užsikraus 📸')
   return
 }
