@@ -599,6 +599,14 @@ card.onmouseout = () => {
   card.style.transform = 'scale(1)'
 }
 }
+  fetch('https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i1l8fboZGFoHwOnAAspbN/exec')
+  .then(res => res.json())
+  .then(items => {
+    items.reverse().forEach(item => {
+      addItemToFeed(item)
+    })
+  })
 </script>
+    
 
 
