@@ -603,8 +603,12 @@ card.onmouseout = () => {
   .then(res => res.json())
   .then(items => {
     items.reverse().forEach(item => {
-      addItemToFeed(item)
-    })
+  const img = (item.image || '').toString().trim()
+
+  if (!img.startsWith('data:image') && !img.startsWith('http')) return
+
+  addItemToFeed(item)
+})
   })
 </script>
     
