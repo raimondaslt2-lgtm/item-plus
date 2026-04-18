@@ -574,7 +574,7 @@ card.style.transition = '0.2s'
   margin-left: auto;
   margin-right: auto;
 `
-
+if (!data.image || data.image.toString().trim() === "") return;
   card.innerHTML = `
     <img src="${data.image}" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:15px; margin-bottom:10px;">
     <h3>${data.title}</h3>
