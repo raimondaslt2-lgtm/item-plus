@@ -400,6 +400,8 @@ onclick="document.getElementById('uploadModal').classList.add('open'); document.
     <h2>Įkelk savo pirmą rūbą 👕</h2>
 
     <form id="uploadForm">
+      <label for="vardas">Tavo vardas</label>
+<input type="text" id="vardas" name="vardas" placeholder="Pvz. Raimis" required>
       <label>Pavadinimas</label>
       <input name="title" placeholder="Pvz. megztukas" required>
 
@@ -499,7 +501,7 @@ uploadForm.addEventListener('submit', async function(e) {
   const sizeInput = uploadForm.querySelector('input[name="size"]')
   const exchangeInput = uploadForm.querySelector('input[name="exchange"]')
   const file = document.getElementById('photoInput').files[0]
-
+const vardasInput = document.getElementById('vardas')
   if (!file) {
     alert('Prašom pridėti nuotrauką')
     return
@@ -542,6 +544,7 @@ uploadForm.addEventListener('submit', async function(e) {
     title: titleInput.value.trim(),
     size: sizeInput.value.trim(),
     exchange: exchangeInput.value.trim(),
+    user: vardasInput.value.trim(),
     image: imageBase64
   }
 
@@ -632,6 +635,7 @@ if (!data.image || data.image.toString().trim() === "") return;
     <h3>${data.title}</h3>
     <p>Dydis: ${data.size}</p>
     <p>Keisiu į: ${data.exchange}</p>
+    <p>Įkėlė: ${data.user}</p>
     <button class="offerBtn" style="margin-top:10px; background:gold; border:none; padding:10px 15px; border-radius:999px;">
       Siūlyti mainą
     </button>
