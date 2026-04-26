@@ -425,7 +425,28 @@ const form = document.getElementById('regForm')
 const submitBtn = document.getElementById('submitBtn')
 const uploadForm = document.getElementById('uploadForm')
 const uploadModal = document.getElementById('uploadModal')
+function openChat() {
+  document.getElementById('chatModal').classList.add('open')
+}
 
+function closeChat() {
+  document.getElementById('chatModal').classList.remove('open')
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput')
+  const box = document.getElementById('chatBox')
+
+  if (!input.value.trim()) return
+
+  const msg = document.createElement('div')
+  msg.innerText = "Tu: " + input.value
+
+  box.appendChild(msg)
+  box.scrollTop = box.scrollHeight
+
+  input.value = ""
+}
 // uždaryti registracijos modalą
 closeBtn.onclick = function () {
   modal.classList.remove('open')
@@ -639,9 +660,8 @@ if (!data.image || data.image.toString().trim() === "") return;
 
   feed.prepend(card)
   const btn = card.querySelector('.offerBtn')
-
-btn.onclick = () => {
-  alert('Mainų pasiūlymas išsiųstas 🔥')
+btn.onclick = openChat
+  
 }
   card.onmouseover = () => {
   card.style.transform = 'scale(1.02)'
@@ -663,6 +683,18 @@ card.onmouseout = () => {
 })
   })
 </script>
-    
+    <div class="modal" id="chatModal">
+  <div class="modal-card">
+    <button class="modal-x" onclick="closeChat()">X</button>
+
+    <h2>💬 Chat</h2>
+
+    <div id="chatBox" style="height:200px; overflow:auto; margin-bottom:10px; border:1px solid #ddd; padding:10px;"></div>
+
+    <input id="chatInput" placeholder="Rašyk žinutę..." style="width:100%; padding:10px; margin-bottom:10px;">
+
+    <button onclick="sendMessage()" class="btn">Siųsti</button>
+  </div>
+</div>
 
 
