@@ -605,7 +605,9 @@ script.src = 'https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDw
 
 script.onerror = function () {
   userCountEl.innerText = 'Prisijunk prie pirmųjų narių 🚀'
-}
+  }
+  document.body.appendChild(script)
+
 // NUOTRAUKOS PREVIEW
 const photoInput = document.getElementById('photoInput')
 const photoPreview = document.getElementById('photoPreview')
