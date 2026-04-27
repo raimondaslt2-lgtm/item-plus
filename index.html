@@ -360,7 +360,7 @@ onclick="document.getElementById('uploadModal').classList.add('open'); document.
       <div class="note">
         * Pirmiems 100 narių — viskas nemokamai visam laikui. Kitiems 900 — 3 mėn. nemokamai.
       </div>
-   <p id="userCount">Jau prisijungė 0 žmonių 🚀</p>
+   <p id="userCount">Jau prisijungė 25 žmonės 🚀</p>
     </div>
   <div class="modal" id="regModal">
 
@@ -593,9 +593,10 @@ console.log("IMAGE:", imageBase64)
 })
 
 // user count
-function showUserCount(data) {
-  document.getElementById('userCount').innerText =
-    'Jau prisijungė ' + data.count + ' žmonių 🚀'
+596 function showUserCount(data) {
+597   console.log("DATA:", data)
+598   document.getElementById('userCount').innerText =
+599     'Jau prisijungė ' + (data.length || 0) + ' žmonių 🚀'
 }
 
 const userCountEl = document.getElementById('userCount')
