@@ -564,7 +564,7 @@ const vardasInput = document.getElementById('vardas')
     user: vardasInput.value.trim(),
     image: imageBase64
   }
-
+console.log("IMAGE:", imageBase64)
   try {
     const response = await fetch('https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i1l8fboZGFoHwOnAAspbN/exec', {
       method: 'POST',
