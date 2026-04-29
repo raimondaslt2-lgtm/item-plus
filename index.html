@@ -599,7 +599,7 @@ console.log("IMAGE:", imageBase64)
 596 function showUserCount(data) {
 597   console.log("DATA:", data)
 598   document.getElementById('userCount').innerText =
-599     'Jau prisijungė ' + (data.length || 0) + ' žmonių 🚀'
+'Jau prisijungė ' + (data.count || 0) + ' žmonių 🚀'
 }
 
 const userCountEl = document.getElementById('userCount')
