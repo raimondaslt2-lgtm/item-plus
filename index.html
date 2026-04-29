@@ -639,9 +639,8 @@ setTimeout(function () {
   function addItemToFeed(data) {
   const feed = document.getElementById('itemsFeed')
   const card = document.createElement('div')
-  card.style.cursor = 'pointer'
-card.style.transition = '0.2s'
-    card.style = `
+  
+    card.style.cssText = `
   background: white;
   padding: 15px;
   border-radius: 20px;
