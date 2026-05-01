@@ -694,5 +694,21 @@ item.user = item.user || item.vardas || item.name || 'Anonimas'
     <button onclick="sendMessage()" class="btn">Siųsti</button>
   </div>
 </div>
+<script>
+function sendMessage() {
+  const input = document.getElementById('chatInput')
+  const box = document.getElementById('chatBox')
 
+  const text = input.value.trim()
+  if (!text) return
 
+  const msg = document.createElement('div')
+  msg.innerText = text
+  msg.style.marginBottom = '6px'
+
+  box.appendChild(msg)
+
+  input.value = ''
+  box.scrollTop = box.scrollHeight
+}
+</script>
