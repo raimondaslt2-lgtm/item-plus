@@ -578,11 +578,12 @@ console.log("IMAGE:", imageBase64)
     alert('Išsaugota: ' + result)
 
     addItemToFeed({
-      title: data.title,
-      size: data.size,
-      image: imageBase64,
-      exchange: data.exchange
-    })
+  title: data.title,
+  size: data.size,
+  image: imageBase64,
+  exchange: data.exchange,
+  user: data.user
+})
 
     uploadForm.reset()
     photoPreview.src = ''
