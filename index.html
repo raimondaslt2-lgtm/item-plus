@@ -657,7 +657,7 @@ if (!data.image) data.image = '';
     <h3>${data.title}</h3>
     <p>Dydis: ${data.size}</p>
     <p>Keisiu į: ${data.exchange}</p>
-    <p>Įkėlė: ${data.user}</p>
+    <p>Įkėlė: ${data.user || 'Anonimas'}</p>
     <button class="offerBtn" style="margin-top:10px; background:gold; border:none; padding:10px 15px; border-radius:999px;">
       Siūlyti mainą
     </button>
