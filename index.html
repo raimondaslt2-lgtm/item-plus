@@ -657,7 +657,7 @@ if (!data.image) data.image = '';
     <h3>${data.title}</h3>
     <p>Dydis: ${data.size}</p>
     <p>Keisiu į: ${data.exchange}</p>
-    <p>Įkėlė: ${data.user || 'Anonimas'}</p>
+    <p>Įkėlė: ${data.user || data.vardas || data.name || 'Anonimas'}</p>
     <button class="offerBtn" style="margin-top:10px; background:gold; border:none; padding:10px 15px; border-radius:999px;">
       Siūlyti mainą
     </button>
@@ -676,7 +676,7 @@ btn.onclick = openChat
   const img = (item.image || '').toString().trim()
 
   if (!img.startsWith('data:image') && !img.startsWith('http')) return
-
+item.user = item.user || item.vardas || item.name || 'Anonimas'
   addItemToFeed(item)
 })
   })
