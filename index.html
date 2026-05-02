@@ -707,7 +707,12 @@ function sendMessage() {
   msg.style.marginBottom = '6px'
 
   box.appendChild(msg)
-
+fetch('https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i118fboZGFOhWOnAAspbN/exec', {
+  method: 'POST',
+  body: JSON.stringify({
+    message: text
+  })
+})
   input.value = ''
   box.scrollTop = box.scrollHeight
 }
