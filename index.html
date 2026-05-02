@@ -707,12 +707,16 @@ function sendMessage() {
   msg.style.marginBottom = '6px'
 
   box.appendChild(msg)
-fetch('https://script.google.com/macros/s/AKfycbwrG_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i118fboZGFOhWOnAAspbN/exec', {
+fetch('https://script.google.com/macros/s/AKfycbwR_aYeBFEZ_IB06N4z_6UPDwd-e3zcLWYYS9LmYuLHD3i118fboZGFoHwOnAAspbN/exec', {
   method: 'POST',
   body: JSON.stringify({
     message: text
   })
 })
+.then(res => res.text())
+.then(res => console.log('CHAT SAVED:', res))
+.catch(err => console.log('CHAT ERROR:', err))
+
   input.value = ''
   box.scrollTop = box.scrollHeight
 }
