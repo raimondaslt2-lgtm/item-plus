@@ -434,22 +434,7 @@ function openChat() {
 
 function closeChat() {
   document.getElementById('chatModal').classList.remove('open')
-}
 
-function sendMessage() {
-  const input = document.getElementById('chatInput')
-  const box = document.getElementById('chatBox')
-
-  if (!input.value.trim()) return
-
-  const msg = document.createElement('div')
-  msg.innerText = "Tu: " + input.value
-
-  box.appendChild(msg)
-  box.scrollTop = box.scrollHeight
-
-  input.value = ""
-}
 // uždaryti registracijos modalą
 closeBtn.onclick = function () {
   modal.classList.remove('open')
