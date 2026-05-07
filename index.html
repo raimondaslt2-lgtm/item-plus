@@ -658,7 +658,7 @@ btn.onclick = openChat
   .then(items => {
     items.reverse().forEach(item => {
   const img = (item.image || '').toString().trim()
-// if (!img.startsWith('data:image') && !img.startsWith('http')) return
+if (!img.startsWith('data:image') && !img.startsWith('http')) return
 item.user = item.user || item.vardas || item.name || 'Anonimas'
   addItemToFeed(item)
 })
