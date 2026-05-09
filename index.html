@@ -690,8 +690,11 @@ function sendMessage() {
   msg.style.marginBottom = '6px'
 
   box.appendChild(msg)
-fetch('https://script.google.com/macros/s/AKfycbzq4dKFPqqHPT6xtzbET1VMSqcGdzf2Vzx0nkqMTk5NFyzcZXCJ4NrruHUpJ0LI3uWN/exec', {
+fetch('https://script.google.com/macros/s/AKfycbzq4dKFPqqHPT6xtzbET1VMSqcGdzf2VzxoNkqMTk5NFyzcZXCJ4NrruHUpJ0LI3uWN/exec', {
   method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
   body: JSON.stringify({
     message: text
   })
