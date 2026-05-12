@@ -699,7 +699,7 @@ fetch('https://script.google.com/macros/s/AKfycbzq4dKFPqqHPT6xtzbET1VMSqcGdzf2Vz
   body: new URLSearchParams({
     message: text
   })
-});
+})
 .then(res => res.text())
 .then(res => console.log('CHAT SAVED:', res))
 .catch(err => console.log('CHAT ERROR:', err))
